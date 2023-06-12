@@ -2,7 +2,7 @@ install:
 	npm ci
 
 build:
-	npm run build
+	npm run build --prefix my-app
 
 lint-frontend:
 	npx eslint frontend
