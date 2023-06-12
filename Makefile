@@ -2,7 +2,7 @@ install:
 	npm ci
 
 build:
-	npm run build 
+	npm run build
 
 lint-frontend:
 	npx eslint frontend

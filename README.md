@@ -4,7 +4,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/292d1c38e98871863f62/test_coverage)](https://codeclimate.com/github/myakse/frontend-project-12/test_coverage)
 
 
-# Chat
+# Project Description:
 
 Chat (Slack) - this is a convenient application for real-time chat over the Internet, which is designed for users to communicate with each other via text messages.
 
@@ -22,3 +22,4 @@ Chat (Slack) - this is a convenient application for real-time chat over the Inte
 `make start`
 
 ## Project's link:
+frontend-project-12-production-b6a4.up.railway.app
