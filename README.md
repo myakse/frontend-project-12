@@ -6,7 +6,7 @@
 
 # Project Description:
 
-Chat (Slack) - this is a convenient application for real-time chat over the Internet, which is designed for users to communicate with each other via text messages.
+Chat (Slack) is a convenient application for users to communicate with each other via text messages in real time over the Internet.
 
 
 # Installation instructions:
