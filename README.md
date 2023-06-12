@@ -22,4 +22,4 @@ Chat (Slack) - this is a convenient application for real-time chat over the Inte
 `make start`
 
 ## Project's link:
-frontend-project-12-production-b6a4.up.railway.app
+https://frontend-project-12-production-b6a4.up.railway.app/login
