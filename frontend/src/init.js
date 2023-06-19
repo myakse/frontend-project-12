@@ -5,15 +5,13 @@ import i18next from 'i18next';
 import { ErrorBoundary, Provider as RollbarProvider } from '@rollbar/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
 import React, { useCallback, useState } from 'react';
 import filter from 'leo-profanity';
 import { io } from 'socket.io-client';
 import { setCurrentChannelId, addChannel, renameChannel, removeChannel } from './slices/channelsSlice';
 import { addMessage } from './slices/messagesSlice';
-// import toast from 'react-hot-toast';
 import MyContext from './contexts/context.jsx';
-import myStore from './slices/store.js';
+import store from './slices/store.js';
 import ru from './locales/ru/ru';
 import App from './App';
 
@@ -28,9 +26,6 @@ const runApp = async () => {
         ru,
       },
     });
-
-  const store = configureStore(myStore);
-  window.store = store;
 
   filter.add(filter.getDictionary('en'));
   filter.add(filter.getDictionary('ru'));
@@ -63,7 +58,7 @@ const runApp = async () => {
     });
 
   const AuthProvider = ({ children }) => {
-    const [loggedIn, setLoggedIn] = useState(!!JSON.parse(localStorage.getItem('user'))); //! ! makes value boolean
+    const [loggedIn, setLoggedIn] = useState(!!JSON.parse(localStorage.getItem('user'))); 
     const userData = JSON.parse(localStorage.getItem('user'));
 
     const logIn = useCallback(() => {
