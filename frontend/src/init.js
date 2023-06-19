@@ -58,7 +58,7 @@ const runApp = async () => {
     });
 
   const AuthProvider = ({ children }) => {
-    const [loggedIn, setLoggedIn] = useState(!!JSON.parse(localStorage.getItem('user'))); 
+    const [loggedIn, setLoggedIn] = useState(!!JSON.parse(localStorage.getItem('user')));
     const userData = JSON.parse(localStorage.getItem('user'));
 
     const logIn = useCallback(() => {
