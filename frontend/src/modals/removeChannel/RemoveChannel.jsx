@@ -13,7 +13,7 @@ const Remove = ({ id, isShownRemove, setShownRemove }) => {
   const removeItem = (ID) => {
     socket.emit('removeChannel', { id: ID }, (response) => {
       if (response.status === 'ok') {
-        toast(t('Channel removed!'));
+        toast(t('channelRemoved'));
       }
     });
   };
@@ -31,11 +31,11 @@ const Remove = ({ id, isShownRemove, setShownRemove }) => {
     >
 
       <Modal.Header closeButton>
-        <Modal.Title>{t('Remove channel')}</Modal.Title>
+        <Modal.Title>{t('removeChannel')}</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
-        {t('Are you sure?')}
+        {t('questionInModal')}
       </Modal.Body>
 
       <Modal.Footer className={style.footer}>

@@ -17,10 +17,10 @@ const Rename = ({ id, isShownRename, setShownRename }) => {
 
   const validationSchema = object({
     text: string()
-      .min(3, t('From 3 to 20 characters'))
-      .max(20, t('From 3 to 20 characters'))
-      .required(t('Required field'))
-      .notOneOf(channelNames, t('Must be unique')),
+      .min(3, t('minMaxUsernameLenght'))
+      .max(20, t('minMaxUsernameLenght'))
+      .required(t('requiredField'))
+      .notOneOf(channelNames, t('mustBeUniq')),
   });
 
   const formik = useFormik({
@@ -31,9 +31,9 @@ const Rename = ({ id, isShownRename, setShownRename }) => {
     onSubmit: (values) => {
       socket.emit('renameChannel', { id, name: values.text }, (response) => {
         if (response.status === 'ok') {
-          toast(t('Channel renamed!'));
+          toast(t('renamedChannel'));
         } else {
-          toast(t('Connection error'));
+          toast(t('connectionError'));
         }
       });
       formik.resetForm();
@@ -49,12 +49,12 @@ const Rename = ({ id, isShownRename, setShownRename }) => {
     <Modal className={style.modal_dialog} show={isShownRename} onHide={() => setShownRename(false)}>
       <Form onSubmit={formik.handleSubmit}>
         <Modal.Header closeButton>
-          <Modal.Title>{t('Rename channel')}</Modal.Title>
+          <Modal.Title>{t('renameChannel')}</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
           <Form.Group>
-            <Form.Label htmlFor="text" visuallyHidden>{t('Channel name')}</Form.Label>
+            <Form.Label htmlFor="text" visuallyHidden>{t('channelName')}</Form.Label>
             <Form.Control
               autoFocus
               id="text"

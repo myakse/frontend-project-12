@@ -32,15 +32,15 @@ const Registration = () => {
 
   const validationSchema = object({
     username: string()
-      .required(t('Required field'))
-      .min(3, t('From 3 to 20 characters'))
-      .max(20, t('From 3 to 20 characters')),
+      .required(t('requiredField'))
+      .min(3, t('minMaxUsernameLenght'))
+      .max(20, t('minMaxUsernameLenght')),
     password: string()
-      .required(t('Required field'))
-      .min(6, t('At least 6 characters')),
+      .required(t('requiredField'))
+      .min(6, t('minPasswordLenght')),
     passwordConfirmation: string()
-      .required(t('Required field'))
-      .oneOf([Yup.ref('password'), null], t('Passwords must match')),
+      .required(t('requiredField'))
+      .oneOf([Yup.ref('password'), null], t('confirmPassword')),
   });
 
   const onFormSubmit = useCallback(async (values) => {
@@ -55,9 +55,9 @@ const Registration = () => {
       }
     } catch (error) {
       if (error.response.data.statusCode === 409) {
-        setErr(t('This user already exists'));
+        setErr(t('existingUser'));
       } else {
-        toast(t('Connection error'));
+        toast(t('connectionError'));
       }
     }
   }, [logIn, navigate, t]);
@@ -119,13 +119,13 @@ const Registration = () => {
                   </Form.Control.Feedback>
                 </FloatingLabel>
 
-                <FloatingLabel controlId="floatingPasswordConfirmation" label={t('Confirm password')}>
+                <FloatingLabel controlId="floatingPasswordConfirmation" label={t('ConfirmPassword')}>
                   <Form.Control
                     className={style.input}
                     type="password"
                     name="passwordConfirmation"
                     autoComplete="current-passwordConfirmation"
-                    placeholder={t('Confirm password')}
+                    placeholder={t('ConfirmPassword')}
                     required
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}

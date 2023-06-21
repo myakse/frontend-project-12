@@ -12,7 +12,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto('http://localhost:3000');
   await page.waitForTimeout(300);
 
-  await page.locator('text=Hexlet Chat').first().click();
+  await page.locator('text=chatLogo').first().click();
 });
 
 test.describe('registration', () => {

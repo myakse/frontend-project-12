@@ -148,8 +148,8 @@ const Home = () => {
                   id="message"
                   name="message"
                   className={style.formInput}
-                  aria-label={t('New message')}
-                  placeholder={t('Enter your message...')}
+                  aria-label={t('newMessage')}
+                  placeholder={t('messageFormPlaceholder')}
                   autoComplete="message"
                   autoFocus
                   required

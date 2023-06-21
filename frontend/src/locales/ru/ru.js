@@ -1,5 +1,5 @@
 const ru = {
-  translation: {    
+  translation: {
     messagesCount_one: '{{count}} сообщение',
     messagesCount_few: '{{count}} сообщения',
     messagesCount_many: '{{count}} сообщений',
@@ -36,7 +36,7 @@ const ru = {
     ConfirmPassword: 'Подтвердите пароль',
     notFound: 'Страница не найдена',
     youCanGo: 'Но вы можете перейти ',
-    toTheMainPage: 'на главную страницу',
+    mainPage: 'на главную страницу',
     channelCreated: 'Канал создан',
     channelRemoved: 'Канал удалён',
     mustBeUniq: 'Должно быть уникальным',

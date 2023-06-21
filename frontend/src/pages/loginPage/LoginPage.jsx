@@ -25,8 +25,8 @@ const Login = () => {
   const { t } = useTranslation();
 
   const validationSchema = object({
-    username: string().required(t('Required field')),
-    password: string().required(t('Required field')),
+    username: string().required(t('requiredField')),
+    password: string().required(t('requiredField')),
   });
 
   const inputRef = useRef();
@@ -46,9 +46,9 @@ const Login = () => {
       }
     } catch (error) {
       if (error.response.data.statusCode === 401) {
-        setErr(t('Not correct name or password'));
+        setErr(t('notCorrectUsername'));
       } else {
-        toast(t('Connection error'));
+        toast(t('connectionError'));
       }
     }
   }, [logIn, navigate, t]);
@@ -73,12 +73,12 @@ const Login = () => {
             <Form onSubmit={formik.handleSubmit} className={style.form}>
               <h1>{t('Enter')}</h1>
               <Stack gap={3}>
-                <FloatingLabel controlId="floatingUsername" label={t('Your nickname')}>
+                <FloatingLabel controlId="floatingUsername" label={t('yournickname')}>
                   <Form.Control
                     className={style.input}
                     name="username"
                     type="text"
-                    placeholder={t('Your nickname')}
+                    placeholder={t('yournickname')}
                     required
                     autoComplete="current-username"
                     onBlur={formik.handleBlur}
@@ -115,7 +115,7 @@ const Login = () => {
             </Form>
           </div>
           <div className={style.footer}>
-            <span style={{ marginRight: '3px' }}>{t('Don\'t have an account?')}</span>
+            <span style={{ marginRight: '3px' }}>{t('notAccount')}</span>
             <a href="/signup" style={{ color: '#0d6efd' }}>{t('Registration')}</a>
           </div>
         </div>

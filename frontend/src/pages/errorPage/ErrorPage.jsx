@@ -10,10 +10,10 @@ const Error = () => {
       <Nav />
       <div className={style.container}>
         <img src={sadSmileImg} style={{ width: '100px', height: '100px' }} alt="ErrorPicture" />
-        <h1>{t('Page not found')}</h1>
+        <h1>{t('notFound')}</h1>
         <div>
-          <span>{t('But you can go ')}</span>
-          <a href="/">{t('to the main page')}</a>
+          <span>{t('youCanGo')}</span>
+          <a href="/">{t('mainPage')}</a>
         </div>
       </div>
     </div>

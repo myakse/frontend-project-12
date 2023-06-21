@@ -19,10 +19,10 @@ const Add = ({ isShown, setShown }) => {
 
   const validationSchema = object({
     text: string()
-      .min(3, t('From 3 to 20 characters'))
-      .max(20, t('From 3 to 20 characters'))
-      .required(t('Required field'))
-      .notOneOf(channelNames, t('Must be unique')),
+      .min(3, t('minMaxUsernameLenght'))
+      .max(20, t('minMaxUsernameLenght'))
+      .required(t('requiredField'))
+      .notOneOf(channelNames, t('mustBeUniq')),
   });
 
   const formik = useFormik({
@@ -31,9 +31,9 @@ const Add = ({ isShown, setShown }) => {
       const newChannel = { name: values.text };
       socket.emit('newChannel', newChannel, (response) => {
         if (response.status === 'ok') {
-          toast.success(t('Channel created!'));
+          toast.success(t('channelCreated'));
         } else {
-          toast.error(t('Connection error'));
+          toast.error(t('connectionError'));
         }
       });
 
@@ -52,12 +52,12 @@ const Add = ({ isShown, setShown }) => {
     <Modal className={style.modal_dialog} show={isShown} onHide={handleClose}>
       <Form onSubmit={formik.handleSubmit}>
         <Modal.Header closeButton>
-          <Modal.Title>{t('Add channel')}</Modal.Title>
+          <Modal.Title>{t('addChannel')}</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
           <Form.Group className="mb-0">
-            <Form.Label htmlFor="text" visuallyHidden>{t('Channel name')}</Form.Label>
+            <Form.Label htmlFor="text" visuallyHidden>{t('channelName')}</Form.Label>
             <Form.Control
               id="text"
               autoFocus
