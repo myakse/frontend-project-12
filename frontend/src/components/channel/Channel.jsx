@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import Remove from '../../modals/removeChannel/RemoveChannel';
 import Rename from '../../modals/renameChannel/RenameChannel';
 
-const MyDrop = ({ isActive, isRemovable, id }) => {
+const Channel = ({ isActive, isRemovable, id }) => {
   const [isRemoveOpen, setRemoveOpen] = useState(false);
   const [isRenameOpen, setRenameOpen] = useState(false);
   const { t } = useTranslation();
@@ -38,4 +38,4 @@ const MyDrop = ({ isActive, isRemovable, id }) => {
   );
 };
 
-export default MyDrop;
+export default Channel;
