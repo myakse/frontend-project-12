@@ -29,7 +29,7 @@ const Home = () => {
   const { channels, currentChannelId } = stateChannels;
   const { messages } = stateMessages;
   const {
-    logOut, loggedIn, userData, socket, isLogin
+    logOut, userData, socket, isLogin,
   } = useContext(MyContext);
   const messagesNumber = messages.filter((message) => (
     message.channelId === currentChannelId)).length;
@@ -73,27 +73,20 @@ const Home = () => {
   );
 
   const PrivateRoute = ( { children } ) => {
-    const { isLogin } = useAuthContent()
-    
+    const { isLogin } = useAuthContent();    
     if (isLogin) {
-     return children
+      return children;
     }
-   
-    return <Navigate to={routes.loginPagePath()} /> 
-    
-   }
+    return <Navigate to={routes.loginPagePath()} />     
+  };
 
   useEffect(() => {
     animateScroll.scrollToBottom({ containerId: 'messageBlock', delay: 0, duration: 0 });
-
-    if (!loggedIn) {
-      navigate('/login');
-    } else {
       const fetchData = async () => {
         const { data } = await axios.get(routes.dataPath(), { headers: getAuthHeader() });
         dispatch(setChannels(data.channels));
         dispatch(setMessages(data.messages));
-      };
+     
 
       fetchData();
     }
