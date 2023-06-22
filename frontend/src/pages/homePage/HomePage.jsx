@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import { Formik, Form, Field } from 'formik';
 import { Button } from 'react-bootstrap';
@@ -29,7 +29,7 @@ const Home = () => {
   const { channels, currentChannelId } = stateChannels;
   const { messages } = stateMessages;
   const {
-    logOut, loggedIn, userData, socket,
+    logOut, loggedIn, userData, socket, isLogin
   } = useContext(MyContext);
   const messagesNumber = messages.filter((message) => (
     message.channelId === currentChannelId)).length;
@@ -71,6 +71,17 @@ const Home = () => {
       })}
     </ul>
   );
+
+  const PrivateRoute = ( { children } ) => {
+    const { isLogin } = useAuthContent()
+    
+    if (isLogin) {
+     return children
+    }
+   
+    return <Navigate to={routes.loginPagePath()} /> 
+    
+   }
 
   useEffect(() => {
     animateScroll.scrollToBottom({ containerId: 'messageBlock', delay: 0, duration: 0 });

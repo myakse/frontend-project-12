@@ -58,6 +58,7 @@ const runApp = async () => {
     });
 
   const AuthProvider = ({ children }) => {
+    const isLogin = () => !!loggedIn;
     const [loggedIn, setLoggedIn] = useState(!!JSON.parse(localStorage.getItem('user')));
     const userData = JSON.parse(localStorage.getItem('user'));
 
@@ -72,7 +73,7 @@ const runApp = async () => {
 
     return (
       <MyContext.Provider value={{
-        loggedIn, logIn, logOut, userData, socket,
+        loggedIn, logIn, logOut, userData, socket, isLogin, 
       }}
       >
         {children}
