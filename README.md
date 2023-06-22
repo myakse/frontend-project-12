@@ -22,4 +22,4 @@ Chat (Slack) is a convenient application for users to communicate with each othe
 `make start`
 
 ## Project's link:
-https://frontend-project-12-production-d5f1.up.railway.app
+https://frontend-project-12-production-d5f1.up.railway.app/login
