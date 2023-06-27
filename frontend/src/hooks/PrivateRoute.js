@@ -4,8 +4,8 @@ import { useAuthContent }  from './useAuthContent.js';
 import routes from '../routes.js';
 
 const PrivateRoute = ( { children } ) => {
-    const auth = useAuthContent();    
-    if (!!auth) {
+    const { isLogin } = useAuthContent();    
+    if (isLogin()) {
       return children;
     }
     return <Navigate to={routes.loginPagePath()} />     
