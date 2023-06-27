@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useContext, } from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAuthContent }  from './useAuthContent.js';
+import MyContext from '../contexts/context';
 import routes from '../routes.js';
 
 const PrivateRoute = ( { children } ) => {
-    const { isLogin } = useAuthContent();    
-    if (isLogin()) {
+    const { isLogin } = useContext(MyContext);
+    if (!!isLogin) {
       return children;
     }
     return <Navigate to={routes.loginPagePath()} />     
