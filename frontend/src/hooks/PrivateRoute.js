@@ -5,7 +5,7 @@ import routes from '../routes.js';
 
 const PrivateRoute = ( { children } ) => {
     const { isLogin } = useContext(MyContext);
-    if (!!isLogin) {
+    if (isLogin()) {
       return children;
     }
     return <Navigate to={routes.loginPagePath()} />     

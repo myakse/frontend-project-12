@@ -10,8 +10,8 @@ import PrivateRoute from './hooks/PrivateRoute.js';
 const App = () => (
   <Routes> 
     <Route path={routes.homePagePath()} element = { <PrivateRoute><Home /></PrivateRoute> } />
-    <Route path={routes.loginPagePath()} element={ <PrivateRoute><Login /></PrivateRoute> } />
-    <Route path={routes.signUpPagePath()} element={ <PrivateRoute><Registration /></PrivateRoute> } />
+    <Route path={routes.loginPagePath()} element={ <Login /> } />
+    <Route path={routes.signUpPagePath()} element={ <Registration /> } />
     <Route path="*" element={<Error />} />
     
   </Routes>
