@@ -72,15 +72,7 @@ const Home = () => {
     </ul>
   );
 
-  const PrivateRoute = ( { children } ) => {
-    const { isLogin } = useAuthContent();    
-    if (isLogin) {
-      return children;
-    }
-    return <Navigate to={routes.loginPagePath()} />     
-  };
-
-  useEffect(() => {
+useEffect(() => {
     animateScroll.scrollToBottom({ containerId: 'messageBlock', delay: 0, duration: 0 });
       const fetchData = async () => {
         const { data } = await axios.get(routes.dataPath(), { headers: getAuthHeader() });

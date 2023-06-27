@@ -13,7 +13,7 @@ Chat (Slack) is a convenient application for users to communicate with each othe
 1. Clone the repository locally
 `git@github.com:myakse/frontend-project-12.git`
 2. Go to the created directory
-`cd frontend-project-12.git`
+`cd frontend-project-12`
 3. Install Dependencies
 `make install`
 4. Build application
