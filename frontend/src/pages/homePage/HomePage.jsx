@@ -74,24 +74,23 @@ const Home = () => {
 
   useEffect(() => {
     animateScroll.scrollToBottom({ containerId: 'messageBlock', delay: 0, duration: 0 });
-    if (!loggedIn) {
-      navigate('/login');
-    } else {
-      const fetchData = async () => {
+    const fetchData = async () => {
+      try {
         const { data } = await axios.get(routes.dataPath(), { headers: getAuthHeader() });
         dispatch(setChannels(data.channels));
         dispatch(setMessages(data.messages));
-      };
-
-      fetchData();
-    }
-  }, [dispatch, messagesNumber]);
-
-  useEffect(() => {
-    if (!channels.some((channel) => channel.id === currentChannelId)) {
-      dispatch(setCurrentChannelId(1));
-    }
-  }, [channels.length]);
+      } catch (error) {
+        console.log('error', error);
+        if (error.code === 'ERR_BAD_REQUEST') {
+          auth.logOut();
+          navigate(routes.loginPagePath());
+        } else if (error) {
+          toast.error(t('errors.networkError'));
+        }
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className={style.homeBlock}>
