@@ -23,7 +23,7 @@ const Channel = ({ isActive, isRemovable, id }) => {
       {isRemovable && (
         <Dropdown>
           <Dropdown.Toggle variant={isActive && 'secondary'} id="dropdown-basic">
-            <span className="visually-hidden">{t('Channel management')}</span>
+            <span className="visually-hidden">{t('channelControl')}</span>
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
