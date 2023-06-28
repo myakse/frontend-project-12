@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import filter from 'leo-profanity';
 import { animateScroll } from 'react-scroll';
 import { ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import Nav from '../../components/nav/Nav';
 import Channel from '../../components/channel/Channel';
 import Add from '../../modals/addChannel/AddChannel';
@@ -20,6 +21,7 @@ import routes from '../../routes';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Home = () => {
+  const auth = useContext(MyContext);
   const { t } = useTranslation();
   const [shownAdd, setShownAdd] = useState(false);
   const dispatch = useDispatch();
@@ -29,7 +31,7 @@ const Home = () => {
   const { channels, currentChannelId } = stateChannels;
   const { messages } = stateMessages;
   const {
-    logOut, userData, socket, loggedIn,
+    logOut, userData, socket,
   } = useContext(MyContext);
   const messagesNumber = messages.filter((message) => (
     message.channelId === currentChannelId)).length;
