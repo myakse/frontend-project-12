@@ -4,8 +4,8 @@ import Home from './pages/homePage/HomePage';
 import Error from './pages/errorPage/ErrorPage';
 import Login from './pages/loginPage/LoginPage';
 import Registration from './pages/registrationPage/RegistrationPage';
-import routes from './routes.js';
 import PrivateRoute from './hooks/PrivateRoute.js';
+import routes from './routes.js';
 
 const App = () => (
   <Routes> 

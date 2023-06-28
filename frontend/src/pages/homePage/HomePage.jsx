@@ -29,7 +29,7 @@ const Home = () => {
   const { channels, currentChannelId } = stateChannels;
   const { messages } = stateMessages;
   const {
-    logOut, userData, socket, isLogin,
+    logOut, userData, socket, loggedIn,
   } = useContext(MyContext);
   const messagesNumber = messages.filter((message) => (
     message.channelId === currentChannelId)).length;
@@ -72,13 +72,16 @@ const Home = () => {
     </ul>
   );
 
-useEffect(() => {
+  useEffect(() => {
     animateScroll.scrollToBottom({ containerId: 'messageBlock', delay: 0, duration: 0 });
-      const fetchData = async () => {
+    if (!loggedIn) {
+      navigate('/login');
+    } else {
+    const fetchData = async () => {
         const { data } = await axios.get(routes.dataPath(), { headers: getAuthHeader() });
         dispatch(setChannels(data.channels));
         dispatch(setMessages(data.messages));
-     
+      };
 
       fetchData();
     }
