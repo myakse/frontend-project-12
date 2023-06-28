@@ -57,7 +57,7 @@ const runApp = async () => {
       store.dispatch(renameChannel(data));
     });
 
-  const AuthProvider = ({ children }) => {    
+  const AuthProvider = ({ children }) => {
     const [loggedIn, setLoggedIn] = useState(!!JSON.parse(localStorage.getItem('user')));
     const userData = JSON.parse(localStorage.getItem('user'));
     const isLogin = () => !!loggedIn;

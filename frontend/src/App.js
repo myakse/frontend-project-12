@@ -12,7 +12,7 @@ const App = () => (
     <Route path={routes.homePagePath()} element={<PrivateRoute><Home /></PrivateRoute>} />
     <Route path={routes.loginPagePath()} element={<Login />} />
     <Route path={routes.signUpPagePath()} element={<Registration />} />
-    <Route path="*" element={<Error />} />    
+    <Route path="*" element={<Error />} />
   </Routes>
 );
 
