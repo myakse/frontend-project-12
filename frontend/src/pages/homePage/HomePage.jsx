@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Formik, Form, Field } from 'formik';
 import { Button } from 'react-bootstrap';
@@ -77,7 +77,7 @@ const Home = () => {
     if (!loggedIn) {
       navigate('/login');
     } else {
-    const fetchData = async () => {
+      const fetchData = async () => {
         const { data } = await axios.get(routes.dataPath(), { headers: getAuthHeader() });
         dispatch(setChannels(data.channels));
         dispatch(setMessages(data.messages));

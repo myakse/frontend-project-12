@@ -57,10 +57,10 @@ const runApp = async () => {
       store.dispatch(renameChannel(data));
     });
 
-  const AuthProvider = ({ children }) => {
-    const isLogin = () => !!loggedIn;
+  const AuthProvider = ({ children }) => {    
     const [loggedIn, setLoggedIn] = useState(!!JSON.parse(localStorage.getItem('user')));
     const userData = JSON.parse(localStorage.getItem('user'));
+    const isLogin = () => !!loggedIn;
 
     const logIn = useCallback(() => {
       setLoggedIn(true);
@@ -73,7 +73,7 @@ const runApp = async () => {
 
     return (
       <MyContext.Provider value={{
-        loggedIn, logIn, logOut, userData, socket, isLogin, 
+        loggedIn, logIn, logOut, userData, socket, isLogin,
       }}
       >
         {children}

@@ -4,11 +4,11 @@ import MyContext from '../contexts/context';
 import routes from '../routes.js';
 
 const PrivateRoute = ( { children } ) => {
-    const { isLogin } = useContext(MyContext);
-    if (isLogin()) {
-      return children;
-    }
-    return <Navigate to={routes.loginPagePath()} />     
-  };
+  const { isLogin } = useContext(MyContext);
+  if (isLogin()) {
+    return children;
+  }
+  return <Navigate to={routes.loginPagePath()} />
+};
 
 export default PrivateRoute;
