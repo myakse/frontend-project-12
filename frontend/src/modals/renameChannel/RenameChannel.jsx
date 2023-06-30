@@ -4,7 +4,6 @@ import { useFormik } from 'formik';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { object, string } from 'yup';
-// import toast from 'react-hot-toast';
 import { toast } from 'react-toastify';
 import style from './RenameChannel.module.scss';
 import MyContext from '../../contexts/context';

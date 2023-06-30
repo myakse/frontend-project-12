@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-// import toast from 'react-hot-toast';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import MyContext from '../../contexts/context';

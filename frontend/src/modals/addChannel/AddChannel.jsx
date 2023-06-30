@@ -5,7 +5,6 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { object, string } from 'yup';
 import { useSelector } from 'react-redux';
-// import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import MyContext from '../../contexts/context';
@@ -66,7 +65,6 @@ const Add = ({ isShown, setShown }) => {
               onChange={formik.handleChange}
               value={formik.values.text}
               isInvalid={formik.touched.text && formik.errors.text}
-              // ref={ref}
             />
             <Form.Control.Feedback style={{ fontSize: '18px' }} type="invalid">
               {t(formik.errors.text)}
