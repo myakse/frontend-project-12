@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
-/* eslint-disable object-curly-newline */
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 import i18next from 'i18next';
 import { ErrorBoundary, Provider as RollbarProvider } from '@rollbar/react';

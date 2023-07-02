@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { io } from 'socket.io-client';
 import MyContext from './context.jsx';
-import { 
+import {
   setCurrentChannelId,
   addChannel,
   renameChannel,
@@ -53,15 +53,15 @@ const AuthProvider = ({ children }) => {
     }
     return {};
   };
-  
+
   return (
-  <MyContext.Provider value={{
+    <MyContext.Provider value={{
     loggedIn, logIn, logOut, userData, socket, isLogin, getAuthHeader,
   }}
   >
     {children}
-    </MyContext.Provider>
-    );
-  };
+  </MyContext.Provider>
+  );
+};
 
 export default AuthProvider;
