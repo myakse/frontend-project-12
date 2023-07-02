@@ -56,11 +56,11 @@ const AuthProvider = ({ children }) => {
 
   return (
     <MyContext.Provider value={{
-    loggedIn, logIn, logOut, userData, socket, isLogin, getAuthHeader,
-  }}
-  >
-    {children}
-  </MyContext.Provider>
+      loggedIn, logIn, logOut, userData, socket, isLogin, getAuthHeader,
+    }}
+    >
+      {children}
+    </MyContext.Provider>
   );
 };
 
