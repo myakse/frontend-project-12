@@ -5,12 +5,9 @@ import i18next from 'i18next';
 import { ErrorBoundary, Provider as RollbarProvider } from '@rollbar/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import filter from 'leo-profanity';
-import { io } from 'socket.io-client';
-import { setCurrentChannelId, addChannel, renameChannel, removeChannel } from './slices/channelsSlice';
-import { addMessage } from './slices/messagesSlice';
-import MyContext from './contexts/context.jsx';
+import AuthProvider from './contexts/AuthProvider.jsx';
 import store from './slices/store.js';
 import ru from './locales/ru/ru';
 import App from './App';
@@ -33,52 +30,6 @@ const runApp = async () => {
   const rollbarConfig = {
     accessToken: process.env.REACT_APP_ROLLBAR_TOKEN,
     environment: 'production',
-  };
-
-  const socket = io();
-  socket
-    .on('connect_error', () => {
-      console.log('socket "connect_error"');
-    })
-    .on('disconnect', (reason) => {
-      console.log(`socket "disconnect" (${reason})`);
-    })
-    .on('newMessage', (data) => {
-      store.dispatch(addMessage(data));
-    })
-    .on('newChannel', (data) => {
-      store.dispatch(addChannel(data));
-      store.dispatch(setCurrentChannelId(data.id));
-    })
-    .on('removeChannel', (data) => {
-      store.dispatch(removeChannel(data.id));
-    })
-    .on('renameChannel', (data) => {
-      store.dispatch(renameChannel(data));
-    });
-
-  const AuthProvider = ({ children }) => {
-    const [loggedIn, setLoggedIn] = useState(!!JSON.parse(localStorage.getItem('user')));
-    const userData = JSON.parse(localStorage.getItem('user'));
-    const isLogin = () => !!loggedIn;
-
-    const logIn = useCallback(() => {
-      setLoggedIn(true);
-    }, []);
-
-    const logOut = useCallback(() => {
-      localStorage.removeItem('user');
-      setLoggedIn(false);
-    }, []);
-
-    return (
-      <MyContext.Provider value={{
-        loggedIn, logIn, logOut, userData, socket, isLogin,
-      }}
-      >
-        {children}
-      </MyContext.Provider>
-    );
   };
 
   return (

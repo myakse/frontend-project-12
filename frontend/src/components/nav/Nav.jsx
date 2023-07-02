@@ -7,7 +7,7 @@ const Nav = ({ button }) => {
   return (
     <nav className={style.nav}>
       <div className={style.navContainer}>
-        <a href="/">{t('Hexlet Chat')}</a>
+        <a href="/">{t('chatLogo')}</a>
         {button}
       </div>
     </nav>

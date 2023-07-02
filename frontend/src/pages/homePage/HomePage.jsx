@@ -30,17 +30,10 @@ const Home = () => {
   const { channels, currentChannelId } = stateChannels;
   const { messages } = stateMessages;
   const {
-    logOut, userData, socket,
+    logOut, userData, socket, getAuthHeader,
   } = useContext(MyContext);
   const messagesNumber = messages.filter((message) => (
     message.channelId === currentChannelId)).length;
-
-  const getAuthHeader = () => {
-    if (userData.username && userData.token) {
-      return { Authorization: `Bearer ${userData.token}` };
-    }
-    return {};
-  };
 
   const onExitButton = () => {
     localStorage.removeItem('user');
