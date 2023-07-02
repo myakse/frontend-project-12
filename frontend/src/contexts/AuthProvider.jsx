@@ -1,7 +1,12 @@
-import React, { useCallback, useState, useContext } from 'react';
-import MyContext from './context.jsx';
+import React, { useCallback, useState } from 'react';
 import { io } from 'socket.io-client';
-import { setCurrentChannelId, addChannel, renameChannel, removeChannel } from '../slices/channelsSlice.js';
+import MyContext from './context.jsx';
+import { 
+  setCurrentChannelId,
+  addChannel,
+  renameChannel,
+  removeChannel,
+} from '../slices/channelsSlice.js';
 import { addMessage } from '../slices/messagesSlice';
 import store from '../slices/store.js';
 
@@ -27,36 +32,35 @@ socket
     store.dispatch(renameChannel(data));
   });
 
-
 const AuthProvider = ({ children }) => {
-    const [loggedIn, setLoggedIn] = useState(!!JSON.parse(localStorage.getItem('user')));
-    const userData = JSON.parse(localStorage.getItem('user'));
-    const isLogin = () => !!loggedIn;
+  const [loggedIn, setLoggedIn] = useState(!!JSON.parse(localStorage.getItem('user')));
+  const userData = JSON.parse(localStorage.getItem('user'));
+  const isLogin = () => !!loggedIn;
 
-    const logIn = useCallback(() => {
-      setLoggedIn(true);
-    }, []);
+  const logIn = useCallback(() => {
+    setLoggedIn(true);
+  }, []);
 
-    const logOut = useCallback(() => {
-      localStorage.removeItem('user');
-      setLoggedIn(false);
-    }, []);
+  const logOut = useCallback(() => {
+    localStorage.removeItem('user');
+    setLoggedIn(false);
+  }, []);
 
-    const getAuthHeader = () => {
-      const user = JSON.parse(localStorage.getItem('user'));
-      if (user && user.token) {
-        return { Authorization: `Bearer ${user.token}` };
-      }
-      return {};
-    };
-
-    return (
-      <MyContext.Provider value={{
-        loggedIn, logIn, logOut, userData, socket, isLogin, getAuthHeader,
-      }}
-      >
-        {children}
-      </MyContext.Provider>
+  const getAuthHeader = () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user && user.token) {
+      return { Authorization: `Bearer ${user.token}` };
+    }
+    return {};
+  };
+  
+  return (
+  <MyContext.Provider value={{
+    loggedIn, logIn, logOut, userData, socket, isLogin, getAuthHeader,
+  }}
+  >
+    {children}
+    </MyContext.Provider>
     );
   };
 
