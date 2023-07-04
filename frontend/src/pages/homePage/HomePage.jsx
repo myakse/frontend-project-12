@@ -16,6 +16,7 @@ import MyContext from '../../contexts/context';
 import style from './HomePage.module.scss';
 import { setMessages } from '../../slices/messagesSlice.js';
 import { setChannels, setCurrentChannelId } from '../../slices/channelsSlice.js';
+import { stateChannels, stateMessages } from '../../selectors/channelsSelectors';
 import routes from '../../routes';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -25,10 +26,10 @@ const Home = () => {
   const [shownAdd, setShownAdd] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const stateChannels = useSelector((state) => state.channelsReducer);
-  const stateMessages = useSelector((state) => state.messagesReducer);
-  const { channels, currentChannelId } = stateChannels;
-  const { messages } = stateMessages;
+  const selectChannels = useSelector(stateChannels);
+  const selectMessages = useSelector(stateMessages);
+  const { channels, currentChannelId } = selectChannels;
+  const { messages } = selectMessages;
   const {
     logOut, userData, socket, getAuthHeader,
   } = useContext(MyContext);
