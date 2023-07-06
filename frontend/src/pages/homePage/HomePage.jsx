@@ -65,7 +65,7 @@ const Home = () => {
       })}
     </ul>
   );
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -88,7 +88,7 @@ const Home = () => {
   useEffect(() => {
     animateScroll.scrollToBottom({ containerId: 'messages-box', delay: 0, duration: 0 });
   }, [messages.length]);
-  
+
   return (
     <div className={style.homeBlock}>
       <ToastContainer />
