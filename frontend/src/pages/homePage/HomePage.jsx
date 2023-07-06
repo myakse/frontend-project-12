@@ -37,7 +37,6 @@ const Home = () => {
     message.channelId === currentChannelId)).length;
 
   const onExitButton = () => {
-    localStorage.removeItem('user');
     logOut();
     navigate('/login');
   };

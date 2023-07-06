@@ -37,9 +37,10 @@ const AuthProvider = ({ children }) => {
   const userData = JSON.parse(localStorage.getItem('user'));
   const isLogin = () => !!loggedIn;
 
-  const logIn = useCallback(() => {
+  const logIn = (user) => {
+    localStorage.setItem('user', JSON.stringify(user));
     setLoggedIn(true);
-  }, []);
+  };
 
   const logOut = useCallback(() => {
     localStorage.removeItem('user');

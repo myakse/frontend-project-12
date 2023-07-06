@@ -35,15 +35,12 @@ const Login = () => {
   }, []);
 
   const onFormSubmit = useCallback(async (values) => {
+    setErr(false);
     try {
-      setErr(false);
       const response = await axios.post(routes.loginPath(), values);
       const user = response.data;
-      if (user) {
-        window.localStorage.setItem('user', JSON.stringify(user));
-        logIn();
-        navigate('/');
-      }
+      logIn(user);
+      navigate('/');
     } catch (error) {
       if (error.response.data.statusCode === 401) {
         setErr(t('notCorrectUsername'));
