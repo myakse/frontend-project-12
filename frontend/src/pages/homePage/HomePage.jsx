@@ -65,9 +65,8 @@ const Home = () => {
       })}
     </ul>
   );
-
+  
   useEffect(() => {
-    animateScroll.scrollToBottom({ containerId: 'messageBlock', delay: 0, duration: 0 });
     const fetchData = async () => {
       try {
         const { data } = await axios.get(routes.dataPath(), { headers: getAuthHeader() });
@@ -86,6 +85,10 @@ const Home = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    animateScroll.scrollToBottom({ containerId: 'messages-box', delay: 0, duration: 0 });
+  }, [messages.length]);
+  
   return (
     <div className={style.homeBlock}>
       <ToastContainer />
